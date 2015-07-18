@@ -9,12 +9,12 @@ public class Weibo {
 	private int starNum;
 	private int shitNum;
 	
-	private long time;
+	private String time;
 	
 	private int userId;
 	private String posterName;
 	
-	
+	private int random;
 	
 	
 	public int getId() {
@@ -59,11 +59,17 @@ public class Weibo {
 	public void setPosterName(String posterName) {
 		this.posterName = posterName;
 	}
-	public long getTime() {
+	public String getTime() {
 		return time;
 	}
-	public void setTime(long time) {
+	public void setTime(String time) {
 		this.time = time;
+	}
+	public int getRandom() {
+		return random;
+	}
+	public void setRandom(int random) {
+		this.random = random;
 	}
 
 }

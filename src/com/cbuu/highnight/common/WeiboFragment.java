@@ -1,5 +1,7 @@
 package com.cbuu.highnight.common;
 
+import java.util.Random;
+
 import com.cbuu.highnight.MainActivity;
 import com.cbuu.highnight.R;
 import com.cbuu.highnight.SingleChatActivity;
@@ -81,9 +83,10 @@ public class WeiboFragment extends Fragment implements View.OnClickListener{
 		content.setText(weibo.getText());
 		dislikeNum.setText(""+weibo.getShitNum());
 		likeNum.setText(""+weibo.getStarNum());
-		publishTime.setText(MyDateUtil.getShowTimeString(weibo.getTime()));
+		publishTime.setText(weibo.getTime().split(" ")[1]);
 		number.setText(order+"/"+sum);
 		
+		image.setImageDrawable(getResources().getDrawable(R.drawable.a0+weibo.getRandom()));
 	}
 
 	@Override

@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Random;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -32,6 +33,7 @@ import com.cbuu.highnight.utils.Logger;
 import com.cbuu.highnight.utils.MyDateUtil;
 import com.cbuu.highnight.utils.MyHttpUtils;
 
+import android.R.bool;
 import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
@@ -55,7 +57,7 @@ public class SingleFragment extends MyFragment {
 
 	private ViewPager pager;
 
-	private List<Weibo> weibos;
+	static private List<Weibo> weibos;
 
 	private List<Fragment> fragments;
 
@@ -89,15 +91,13 @@ public class SingleFragment extends MyFragment {
 		fragments = new ArrayList<Fragment>();
 		weibos = new ArrayList<Weibo>();
 
-		// TODO update the weibos
 		updateData();
-		// addData();
 
 		return view;
 	}
 
 	private void updateData() {
-		weibos.clear();
+		//weibos.clear();
 		String url = MyHttpUtils.genGetWeibosUrl();
 
 		MyJsonRequest jsonObjectRequest = new MyJsonRequest(url, null,
@@ -116,10 +116,9 @@ public class SingleFragment extends MyFragment {
 							try {
 								array = response.getJSONArray("weibos");
 							} catch (JSONException e) {
-								// TODO Auto-generated catch block
 								e.printStackTrace();
 							}
-
+							Random random = new Random(System.currentTimeMillis());
 							for (int i = 0; i < array.length(); i++) {
 								JSONObject object = null;
 								try {
@@ -132,16 +131,25 @@ public class SingleFragment extends MyFragment {
 									weibo.setStarNum(object.getInt("agreement"));
 									weibo.setShitNum(object
 											.getInt("disagreement"));
-									weibo.setTime(MyDateUtil
-											.getTimeFromString(object
-													.getString("postTime")));
+									weibo.setTime(object
+													.getString("postTime"));
 									JSONObject posterObject = object
 											.getJSONObject("poster");
 									weibo.setUserId(posterObject.getInt("id"));
 									weibo.setPosterName(posterObject
 											.getString("nickName"));
-
-									weibos.add(weibo);
+									
+									
+									weibo.setRandom(random.nextInt(10));
+									boolean b = true;
+									for (Weibo w : weibos) {
+										if (weibo.getId()==w.getId()) {
+											b = false;break;
+										}
+									}
+									if (b) {
+										weibos.add(weibo);
+									}
 
 								} catch (JSONException e) {
 									// TODO Auto-generated catch block
@@ -175,7 +183,6 @@ public class SingleFragment extends MyFragment {
 		public MyJsonRequest(String url, JSONObject jsonRequest,
 				Listener<JSONObject> listener, ErrorListener errorListener) {
 			super(url, jsonRequest, listener, errorListener);
-			// TODO Auto-generated constructor stub
 		}
 
 		private Map<String, String> mHeaders = new HashMap<String, String>(1);
@@ -186,31 +193,8 @@ public class SingleFragment extends MyFragment {
 
 		@Override
 		public Map<String, String> getHeaders() throws AuthFailureError {
-			// TODO Auto-generated method stub
 			return mHeaders;
 		}
 	}
 
-	private void addData() {
-
-		Weibo weibo = new Weibo();
-		weibo.setShitNum(100);
-		weibo.setStarNum(200);
-		weibo.setText("我日你");
-		weibo.setTime(System.currentTimeMillis());
-		weibo.setId(1);
-
-		weibos.add(weibo);
-		weibos.add(weibo);
-		weibos.add(weibo);
-		weibos.add(weibo);
-
-		fragments.add(new WeiboFragment(weibos.get(0), 1, weibos.size()));
-
-		fragments.add(new WeiboFragment(weibos.get(1), 2, weibos.size()));
-
-		fragments.add(new WeiboFragment(weibos.get(2), 3, weibos.size()));
-
-		fragments.add(new WeiboFragment(weibos.get(3), 4, weibos.size()));
-	}
 }

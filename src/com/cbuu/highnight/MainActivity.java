@@ -90,7 +90,7 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
             transaction.hide(fragment);
         }
         
-        transaction.show(fragments.get(curFragmentNum));
+        transaction.show(fragments.get(1));
         
         transaction.commit();
 	}

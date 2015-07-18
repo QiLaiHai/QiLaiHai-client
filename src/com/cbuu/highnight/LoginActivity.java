@@ -77,7 +77,7 @@ public class LoginActivity extends Activity {
 
 		initActionBar();
 		initView();
-		loadNewAvatar();
+		//loadNewAvatar();
 	}
 
 	private void initActionBar() {
