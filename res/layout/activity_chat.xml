@@ -1,0 +1,47 @@
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <ListView
+        android:id="@+id/messages_listview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/layout_edit" 
+        android:divider="@null"
+        android:cacheColorHint="@null"
+        android:scrollbars="vertical"
+        android:fastScrollEnabled="true"
+        android:transcriptMode="alwaysScroll">
+
+    </ListView>
+
+    <LinearLayout
+        android:id="@+id/layout_edit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal"
+        android:background="#040404"
+        android:layout_centerHorizontal="true" >
+
+       <EditText
+            android:id="@+id/editText_single"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="#FFF"
+            android:singleLine="true"
+            android:textSize="18sp"
+            android:layout_weight="1" >
+        </EditText>
+
+        <ImageButton
+            android:id="@+id/button_single_send"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="5"
+            android:src="@drawable/message" />
+        
+    </LinearLayout>
+
+</RelativeLayout>

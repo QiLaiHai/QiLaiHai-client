@@ -1,0 +1,43 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="${relativePackage}.${activityClass}" >
+
+    <EditText
+        android:id="@+id/edit_publish_content"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true" 
+        android:hint="请输入内容">
+
+        <requestFocus />
+    </EditText>
+
+    <ImageView
+        android:id="@+id/imageview_uploadImage"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/edit_publish_content"
+        android:src="@drawable/brack" />
+
+    <Button
+        android:id="@+id/button_confirm_publish"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:text="确定发送" />
+
+    <Button
+        android:id="@+id/button_takephoto"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/imageview_uploadImage"
+        android:layout_centerHorizontal="true"
+        android:text="选择照片" />
+
+</RelativeLayout>

@@ -1,0 +1,23 @@
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="0dp"
+    android:layout_margin="0dp">
+
+    <Button
+        android:id="@+id/button_publish_single"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="0dp"
+        android:text="发起个人话题" />
+
+    <Button
+        android:id="@+id/button_publish_group"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="0dp"
+        android:layout_below="@+id/button_publish_single"
+        android:text="发起群聊话题" />
+
+</RelativeLayout>
